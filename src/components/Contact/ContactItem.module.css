@@ -1,0 +1,11 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.contact-name,
+.contact-number {
+  margin-bottom: 5px;
+}
