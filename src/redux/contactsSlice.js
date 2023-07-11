@@ -12,11 +12,10 @@ export const contactsItemsSlice = createSlice({
   initialState:
     JSON.parse(localStorage.getItem('contacts')) || initialContacts || [],
   reducers: {
-    handleAddContact: (state, action) => [...state, action.payload],
-    handleRemoveContact: (state, action) =>
+    addContact: (state, action) => [...state, action.payload],
+    deleteContact: (state, action) =>
       state.filter(contact => contact.id !== action.payload),
   },
 });
 
-export const { handleAddContact, handleRemoveContact } =
-  contactsItemsSlice.actions;
+export const { addContact, deleteContact } = contactsItemsSlice.actions;

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
-import { handleAddContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
 
 import css from './ContactForm.module.css';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(selectContacts);
   const [formData, setForm] = useState({
     name: '',
     number: '',
@@ -55,7 +56,7 @@ const ContactForm = () => {
     const isValidPhoneNumber = validatePhoneNumber();
     if (!isValidateForm || !isValidPhoneNumber) return;
 
-    dispatch(handleAddContact({ id: nanoid(), name, number }));
+    dispatch(addContact({ id: nanoid(), name, number }));
 
     setForm({
       name: '',
